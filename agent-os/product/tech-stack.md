@@ -1,84 +1,223 @@
-# Tech Stack
+# Tech Stack (Simplified for Students)
+
+## What We're Actually Using 🛠️
+
+### Core Stack (Just 3 Things!)
+1. **Flask** - Python web framework (easy to learn)
+2. **SQLite** - Database (just a file, no server needed)
+3. **Bootstrap** - CSS framework (instant pretty pages)
+
+That's it! Everything else is optional.
+
+---
+
+## Required Software
+
+### Must Install:
+```bash
+# Python (you probably have it)
+python --version  # Need 3.7 or higher
+
+# Pip (comes with Python)
+pip --version
+
+# That's all!
+```
+
+### Python Packages:
+```bash
+pip install flask           # Web framework
+pip install sqlalchemy      # Database ORM
+pip install qrcode[pil]     # QR code generation
+```
+
+---
+
+## File Structure (Keep It Simple)
+
+```
+fbla-tracker/
+├── app.py              # Everything can go here initially!
+├── templates/          # HTML files
+├── static/             # CSS, JS, images
+└── database.db         # Your database (auto-created)
+```
+
+No complex folders needed!
+
+---
 
 ## Development Approach
-**Backend-First Development:** Building complete REST API layer before frontend implementation
 
-## Framework & Runtime
-- **Application Framework:** Flask (Python web framework for rapid API development)
-- **Language/Runtime:** Python 3.11+ (latest stable version for performance and features)
-- **Package Manager:** pip with requirements.txt for simple dependency management
+### Start Simple:
+1. **One file is OK** - Put everything in app.py at first
+2. **Copy-paste works** - Use examples from tutorials
+3. **Test manually** - Click around, does it work?
+4. **Refactor later** - Split into files when it gets messy
 
-## Backend API Architecture
-- **API Framework:** Flask-RESTful for structured REST API development
-- **Request Validation:** Marshmallow for request/response serialization and validation
-- **API Documentation:** Flask-RESTX or Flasgger for automatic OpenAPI/Swagger generation
-- **CORS Handling:** Flask-CORS for cross-origin requests (when frontend is added)
+### What You DON'T Need:
+❌ Docker
+❌ Redis
+❌ Nginx
+❌ PostgreSQL
+❌ React/Vue
+❌ Webpack
+❌ CI/CD
+❌ Microservices
+❌ Unit tests
+❌ AWS
 
-## Frontend (To Be Implemented Later)
-- **Approach:** Server-side rendering with Flask/Jinja2 templates
-- **Styling:** Bootstrap 5 via CDN (no build process)
-- **JavaScript:** Minimal, only for QR scanning and essential interactivity
+---
 
-## Database & Storage
-- **Database:** SQLite for development, PostgreSQL for production
-- **ORM/Query Builder:** SQLAlchemy (Python's most mature ORM)
-- **Migrations:** Alembic (SQLAlchemy's migration tool)
-- **File Storage:** Local filesystem for development, cloud storage (AWS S3 or similar) for production
+## Quick Reference
 
-## API Architecture
-- **API Style:** RESTful API with JSON responses
-- **API Documentation:** Flask-RESTX or Flasgger for automatic Swagger/OpenAPI docs
-- **Data Validation:** Marshmallow for serialization/deserialization schemas
+### Backend (Python/Flask):
+```python
+from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 
-## Authentication & Security
-- **Authentication:** Flask-Login for session management
-- **Password Hashing:** Werkzeug security utilities with bcrypt
-- **Authorization:** Role-based access control (RBAC) with custom decorators
-- **Session Storage:** Server-side sessions with Flask-Session
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+db = SQLAlchemy(app)
 
-## Testing & Quality
-- **Test Framework:** pytest with Flask testing utilities
-- **Test Coverage:** pytest-cov for coverage reports
-- **Linting:** Flake8 for Python code style
-- **Formatting:** Black for consistent Python formatting
-- **Type Checking:** mypy for optional static typing
+# That's your whole setup!
+```
 
-## External Integrations
-- **Calendar API:** Google Calendar API via google-api-python-client
-- **QR Code Generation:** qrcode Python library with Pillow for image handling
-- **Email Service:** SMTP with Flask-Mail for development, SendGrid for production
-- **SMS (Optional):** Twilio for SMS notifications
+### Frontend (HTML/Bootstrap):
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Bootstrap from CDN - no download needed! -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Your content with Bootstrap classes -->
+    <div class="container">
+        <h1 class="text-center">FBLA Tracker</h1>
+    </div>
+</body>
+</html>
+```
 
-## Development Tools
-- **Environment Management:** python-venv for virtual environments
-- **Environment Variables:** python-dotenv for configuration management
-- **Task Runner:** Make or Invoke for common development tasks
-- **Hot Reload:** Flask's built-in development server with debug mode
+### Database (SQLite):
+```python
+# Define a table
+class Member(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    email = db.Column(db.String(100))
 
-## Deployment & Infrastructure
-- **Web Server:** Gunicorn (Python WSGI HTTP Server)
-- **Reverse Proxy:** Nginx for production
-- **Hosting Options:**
-  - Development: Local machine
-  - Production: DigitalOcean Droplet, AWS EC2, or school's internal servers
-- **Process Manager:** systemd or Supervisor for production
-- **CI/CD:** GitHub Actions for automated testing and deployment
+# Create tables
+db.create_all()
 
-## Monitoring & Logging
-- **Application Logging:** Python's built-in logging module with rotating file handlers
-- **Error Tracking:** Sentry for production error monitoring
-- **Performance Monitoring:** Flask-APM or custom metrics with Prometheus
+# That's it!
+```
 
-## Additional Libraries
-- **Date/Time Handling:** pendulum or arrow for better datetime manipulation
-- **Data Export:** pandas for CSV/Excel generation
-- **Caching:** Flask-Caching with simple backend for development, Redis for production
-- **CORS (if needed):** Flask-CORS for cross-origin requests
-- **Rate Limiting:** Flask-Limiter for API endpoint protection
+---
 
-## Development Standards
-- **Python Version:** 3.11+ (use pyenv for version management)
-- **Code Style:** PEP 8 compliance enforced by tooling
-- **Git Workflow:** Feature branches with main branch protection
-- **Documentation:** Docstrings for all functions, README.md for setup instructions
-- **Configuration:** Environment-based configuration (development, staging, production)
+## Optional Additions (If You Want)
+
+### Nice to Have:
+- **werkzeug** - Password hashing (comes with Flask)
+- **pandas** - CSV export (or just use Python's csv module)
+- **python-dotenv** - Environment variables
+
+### Future Maybes:
+- Email sending (Flask-Mail)
+- Google Calendar (google-api-python-client)
+- Charts (Chart.js via CDN)
+
+---
+
+## Deployment (When Ready)
+
+### Easiest Options:
+1. **Local Machine**
+   ```bash
+   python app.py
+   # Share your IP with E-Board
+   ```
+
+2. **PythonAnywhere** (Free)
+   - Upload files
+   - Click reload
+   - Done!
+
+3. **Heroku** (If free tier exists)
+   - Add Procfile
+   - Git push
+   - Works!
+
+---
+
+## Learning Resources
+
+### Start Here:
+1. [Flask in 10 Minutes](https://flask.palletsprojects.com/quickstart/)
+2. [Bootstrap Examples](https://getbootstrap.com/docs/5.0/examples/)
+3. [SQLAlchemy Basics](https://flask-sqlalchemy.palletsprojects.com/quickstart/)
+
+### When You Need Help:
+- Google: "Flask how to [your task]"
+- ChatGPT: "Write a Flask route that..."
+- YouTube: "Flask tutorial beginner"
+
+---
+
+## Common Patterns
+
+### Every Flask App Needs:
+```python
+# 1. Import stuff
+from flask import Flask, render_template, request, redirect
+
+# 2. Create app
+app = Flask(__name__)
+
+# 3. Routes (URLs)
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+# 4. Run it
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+### Every Database Operation:
+```python
+# Add something
+new_thing = Model(field=value)
+db.session.add(new_thing)
+db.session.commit()
+
+# Get something
+things = Model.query.all()
+thing = Model.query.get(id)
+
+# Update something
+thing.field = new_value
+db.session.commit()
+
+# Delete something
+db.session.delete(thing)
+db.session.commit()
+```
+
+---
+
+## Remember
+
+**You only need:**
+- Flask
+- SQLite
+- Bootstrap
+
+Everything else is optional. Start simple, add complexity only when needed.
+
+**Goal:** Get something working in Week 1, improve it in Weeks 2-3.
+
+---
+
+*Last updated for student developers who just want to build something that works!*
