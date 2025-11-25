@@ -1,0 +1,21 @@
+# FBLA Membership Tracker - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core Framework
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# Database
+Flask-SQLAlchemy==3.0.5
+SQLAlchemy==2.0.21
+
+# QR Code Generation
+qrcode==7.4.2
+Pillow==10.0.0
+
+# Forms
+Flask-WTF==1.1.1
+WTForms==3.0.1
+
+# Development Tools
+python-dotenv==1.0.0

@@ -15,6 +15,9 @@
 - Simple username/password for 5-6 E-Board members
 - Use Flask sessions (no complex JWT needed)
 - One admin level (all E-Board members equal)
+- Admin password reset: Any E-Board member can reset another's password
+- Temporary passwords: System generates memorable temporary passwords (e.g., "HappyEagle123")
+- Force password change: Users must change password after reset
 
 ### 2. Member Management
 - Add members one by one through a form

@@ -37,48 +37,56 @@ Frontend: HTML + Bootstrap (looks good instantly)
 ### 1. Clone the Project
 ```bash
 git clone [your-repo-url]
-cd fbla-tracker
+cd FBLA-Membership-Tracker
 ```
 
 ### 2. Install Python Packages
 ```bash
-pip install flask sqlalchemy qrcode[pil]
+pip install -r requirements.txt
 ```
 
-### 3. Run the App
-```bash
-python app.py
-```
+### 3. Start Coding
 
-### 4. Open in Browser
-```
-http://localhost:5000
-```
 
 That's it! You're running! 🎉
 
 ## Project Structure 📁
 
 ```
-fbla-tracker/
-├── app.py              # Main application
-├── models.py           # Database tables
-├── routes.py           # URL endpoints
-├── templates/          # HTML pages
-│   ├── login.html
-│   ├── dashboard.html
-│   └── checkin.html
-├── static/             # CSS, images
-├── database.db         # SQLite database
-└── requirements.txt    # Python packages
+FBLA-Membership-Tracker/
+│
+├── 📂 src/                      ← YOUR CODE GOES HERE
+│   ├── app.py                   ← Main application (you create this!)
+│   ├── templates/               ← HTML templates
+│   │   ├── base.html           ← Base template
+│   │   ├── login.html          ← Login page
+│   │   ├── dashboard.html      ← Admin dashboard
+│   │   └── ...                 ← Other templates
+│   └── static/                  ← CSS, JS, images
+│       └── qr/                 ← QR code images
+│
+├── 📂 docs/                     ← DOCUMENTATION
+│   ├── team/                   ← For developers
+│   │   ├── SETUP-GUIDE.md     ← ⭐ START HERE
+│   │   ├── QUICK-REFERENCE.md ← Code patterns
+│   │   └── PROJECT-STATUS.md  ← Track progress
+│   ├── project/                ← Project planning
+│   │   ├── PRD.md             ← Requirements
+│   │   └── WBS.md             ← Task breakdown
+│   └── technical/              ← Technical details
+│
+├── 📄 requirements.txt          ← Python packages
+├── 📄 .gitignore               ← Git ignore rules
+└── 📄 database.db              ← SQLite database (auto-created in src/)
 ```
 
-## For Student Developers 👩‍💻👨‍💻
+## For Development 👩‍💻👨‍💻
 
 ### Getting Started:
-1. **No experience?** Start with templates/ folder (HTML)
-2. **Know some Python?** Look at routes.py
-3. **Database curious?** Check out models.py
+1. **First Time?** Read `docs/team/SETUP-GUIDE.md` ⭐
+2. **Need Help?** Check `docs/team/QUICK-REFERENCE.md`
+3. **Track Progress** in `docs/team/PROJECT-STATUS.md`
+4. **Write Code** in `src/` folder
 
 ### Common Tasks:
 
@@ -100,7 +108,7 @@ db.session.commit()
 ```python
 import qrcode
 qr = qrcode.make("https://your-checkin-url")
-qr.save("event-qr.png")
+qr.save("static/qr/event-qr.png")  # Save in static/qr/ folder
 ```
 
 ### Tips for Success:
@@ -161,26 +169,9 @@ Before showing to E-Board:
 |---------|----------|
 | "Module not found" | Run `pip install [module-name]` |
 | "Database locked" | Restart the app |
-| "Template not found" | Check templates/ folder |
+| "Template not found" | Check src/templates/ folder |
 | QR code won't scan | Make it bigger, better lighting |
 | Can't log in | Check username/password in database |
-
-## FAQ 🤔
-
-**Q: Do members need accounts?**
-A: No! Only E-Board members log in. Regular members just scan and submit the form.
-
-**Q: How secure is this?**
-A: Good enough for a student club! We hash passwords and validate inputs.
-
-**Q: Can it handle 500 members?**
-A: Yes, but it's designed for ~60. Works fine up to a few hundred.
-
-**Q: Do we need a server?**
-A: Nope! Can run on any computer with Python.
-
-**Q: Is this production-ready?**
-A: It works! That's what matters for a student project.
 
 ## Contributing 🤝
 
@@ -214,7 +205,7 @@ A: It works! That's what matters for a student project.
 
 ## Team 👥
 
-Built by [Your FBLA Chapter Name] student developers:
+Built by FBLA at UMD student developers:
 - [Add your names here!]
 
 ## License 📄
@@ -226,9 +217,3 @@ This is a student project - feel free to use/modify for your own FBLA chapter!
 **Remember**: This is a learning project. It doesn't need to be perfect, it just needs to work! Have fun and learn something new! 🚀
 
 **Questions?** Ask in the team chat or create an issue on GitHub!
-
----
-
-*"Working software > Comprehensive documentation"* - Some wise programmer
-
-*"Done is better than perfect"* - Every student ever
