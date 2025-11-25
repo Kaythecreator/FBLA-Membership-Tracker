@@ -40,13 +40,31 @@ git clone [your-repo-url]
 cd FBLA-Membership-Tracker
 ```
 
-### 2. Install Python Packages
+### 2. Set Up Virtual Environment
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate it (Windows)
+venv\Scripts\activate
+
+# Activate it (Mac/Linux)
+source venv/bin/activate
+```
+
+### 3. Install Python Packages
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Start Coding
+### 4. Run the App
+```bash
+python app.py
+# or
+flask run
+```
 
+Visit `http://localhost:5000` in your browser!
 
 That's it! You're running! 🎉
 
@@ -57,27 +75,35 @@ FBLA-Membership-Tracker/
 │
 ├── 📂 src/                      ← YOUR CODE GOES HERE
 │   ├── app.py                   ← Main application (you create this!)
+│   ├── models.py                ← Database models
+│   ├── qr_generator.py          ← QR code generation module
 │   ├── templates/               ← HTML templates
 │   │   ├── base.html           ← Base template
 │   │   ├── login.html          ← Login page
 │   │   ├── dashboard.html      ← Admin dashboard
+│   │   ├── members.html        ← Member list
+│   │   ├── events.html         ← Event list
+│   │   ├── checkin.html        ← Check-in form
 │   │   └── ...                 ← Other templates
 │   └── static/                  ← CSS, JS, images
-│       └── qr/                 ← QR code images
+│       └── qr_codes/           ← Generated QR code images
 │
 ├── 📂 docs/                     ← DOCUMENTATION
 │   ├── team/                   ← For developers
 │   │   ├── SETUP-GUIDE.md     ← ⭐ START HERE
 │   │   ├── QUICK-REFERENCE.md ← Code patterns
-│   │   └── PROJECT-STATUS.md  ← Track progress
+│   │   └── WEEK1-PARALLEL-TASKS.md ← Week 1 assignments
 │   ├── project/                ← Project planning
 │   │   ├── PRD.md             ← Requirements
-│   │   └── WBS.md             ← Task breakdown
+│   │   ├── WBS.md             ← Task breakdown with assignments
+│   │   └── WBS-Visual.md      ← Visual timeline
 │   └── technical/              ← Technical details
+│       └── agent-os/           ← Development standards
 │
+├── 📄 app.py                    ← Flask application
 ├── 📄 requirements.txt          ← Python packages
 ├── 📄 .gitignore               ← Git ignore rules
-└── 📄 database.db              ← SQLite database (auto-created in src/)
+└── 📄 database.db              ← SQLite database (auto-created)
 ```
 
 ## For Development 👩‍💻👨‍💻
@@ -86,7 +112,9 @@ FBLA-Membership-Tracker/
 1. **First Time?** Read `docs/team/SETUP-GUIDE.md` ⭐
 2. **Need Help?** Check `docs/team/QUICK-REFERENCE.md`
 3. **Track Progress** in `docs/team/PROJECT-STATUS.md`
-4. **Write Code** in `src/` folder
+4. **Week 1 Tasks** in `docs/team/WEEK1-PARALLEL-TASKS.md`
+5. **Team Tasks** in `docs/team/TEAM-ASSIGNMENTS.md`
+6. **Write Code** in `src/` folder
 
 ### Common Tasks:
 
@@ -127,23 +155,25 @@ qr.save("static/qr/event-qr.png")  # Save in static/qr/ folder
 
 ## Development Workflow 🔄
 
-### Week 1: Basics
-- [ ] Set up Flask
-- [ ] Create database
-- [ ] Build login page
-- [ ] Add member management
+### Week 1: Foundation (Nov 21-28)
+**Three Parallel Streams:**
+- **Database Team**: Design schema, create models, test with sample data
+- **HTML Team**: Build all templates with Bootstrap, make mobile-friendly
+- **QR Module**: Create standalone QR generation system
 
-### Week 2: Core Features
-- [ ] Event creation
-- [ ] QR code generation
-- [ ] Check-in form
-- [ ] Link attendance
+### Week 2: Core Features (Nov 29-Dec 5)
+- [ ] Connect HTML forms to database
+- [ ] Link QR codes to check-in routes
+- [ ] Event creation and management
+- [ ] Check-in processing
+- [ ] Test complete flow
 
-### Week 3: Polish
-- [ ] CSV import/export
-- [ ] Calculate member status
-- [ ] Fix bugs
-- [ ] Test with real data
+### Week 3: Polish & Deploy (Dec 6-12)
+- [ ] Attendance reports
+- [ ] CSV import/export (60 members)
+- [ ] Fix all bugs
+- [ ] E-Board testing
+- [ ] Deploy to production
 
 ## Testing Checklist ✔️
 
@@ -154,14 +184,6 @@ Before showing to E-Board:
 - [ ] QR code generates?
 - [ ] Check-in works?
 - [ ] Can export data?
-
-## Deployment Options 🌐
-
-### Easiest to Hardest:
-1. **Local** - Run on laptop during meetings
-2. **PythonAnywhere** - Free hosting, easy setup
-3. **Heroku** - Free tier (if available)
-4. **School Server** - Ask IT department
 
 ## Common Issues & Fixes 🔧
 
@@ -177,7 +199,7 @@ Before showing to E-Board:
 
 ### For Team Members:
 1. Pick a task from the TODO list
-2. Create a branch: `git checkout -b your-feature`
+2. Push to your feature branch
 3. Make changes
 4. Test it works
 5. Push your branch
@@ -206,7 +228,11 @@ Before showing to E-Board:
 ## Team 👥
 
 Built by FBLA at UMD student developers:
-- [Add your names here!]
+- Kris
+- Souptik
+- Riya
+- Alan
+- Aparna
 
 ## License 📄
 
