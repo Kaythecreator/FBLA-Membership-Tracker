@@ -111,10 +111,10 @@ FBLA-Membership-Tracker/
 ### Getting Started:
 1. **First Time?** Read `docs/team/SETUP-GUIDE.md` ⭐
 2. **Need Help?** Check `docs/team/QUICK-REFERENCE.md`
-3. **Track Progress** in `docs/team/PROJECT-STATUS.md`
-4. **Week 1 Tasks** in `docs/team/WEEK1-PARALLEL-TASKS.md`
-5. **Team Tasks** in `docs/team/TEAM-ASSIGNMENTS.md`
-6. **Write Code** in `src/` folder
+3. **Week 1 Tasks** in `docs/team/WEEK1-PARALLEL-TASKS.md`
+4. **Write Code** in `src/` folder
+
+**NOTE:** Do not worry about any other folders other than project, team, and src.
 
 ### Common Tasks:
 
