@@ -16,7 +16,7 @@ Instead of passing around paper sign-in sheets at FBLA meetings, members scan a 
 - 🔐 Simple login system
 - ➕ Add/edit/remove members
 - 📅 Create events with QR codes
-- 📊 View attendance reports
+- 📊 View attendance reports for events and specific members
 - 💾 Export to CSV/Excel
 
 ### For Regular Members:
