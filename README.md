@@ -116,8 +116,6 @@ FBLA-Membership-Tracker/
 5. **Team Tasks** in `docs/team/TEAM-ASSIGNMENTS.md`
 6. **Write Code** in `src/` folder
 
-**NOTE:** Do not worry about any other folders other than project, team, and src.
-
 ### Common Tasks:
 
 **Add a new page:**
